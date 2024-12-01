@@ -1,62 +1,48 @@
 #include "raylib.h"
+#include "cstdint"
+#include "View/EndingView.h"
+#include "View/GameView.h"
+#include "View/TitleView.h"
 
-typedef enum GameScreen { TITLE, GAMEPLAY, ENDING } GameScreen;
+constexpr int screenWidth{800};
+constexpr int screenHeight{450};
+
+TitleView titleView{};
+GameView gameView{};
+EndingView endingView{};
 
 int main() {
-    constexpr int screenWidth{800};
-    constexpr int screenHeight{450};
+    int currentScene{0};
+    View* currentView = &titleView;
     
     InitWindow(screenWidth, screenHeight, "SnakeCPP");
     SetTargetFPS(60);
 
-    GameScreen currentScreen = TITLE;
+    ClearBackground(RAYWHITE);
 
     while (!WindowShouldClose()) {
-        
-        switch (currentScreen)
+        switch (currentScene)
         {
-            case TITLE:
-                if (IsKeyPressed(KEY_ENTER))
+            case 0:
                 {
-                    currentScreen = GAMEPLAY;
+                    currentView = &titleView;
                 }
-            break;
-            case GAMEPLAY:
-                if (IsKeyPressed(KEY_ENTER))
+                break;
+            case 1:
                 {
-                    currentScreen = ENDING;
+                    currentView = &gameView;
                 }
-            break;
-            case ENDING:
-                if (IsKeyPressed(KEY_ENTER))
+                break;
+            case 2:
                 {
-                    currentScreen = TITLE;
+                    currentView = &endingView;
                 }
             break;
         }
 
+        currentView->Update(&currentScene);
         BeginDrawing();
-        ClearBackground(RAYWHITE);
-
-        switch (currentScreen)
-        {
-            case TITLE:
-                DrawRectangle(0, 0, screenWidth, screenHeight, GREEN);
-                DrawText("TITLE SCREEN", 20, 20, 40, DARKGREEN);
-                DrawText("PRESS ENTER to JUMP to GAMEPLAY SCREEN", 120, 220, 20, DARKGREEN);
-            break;
-            case GAMEPLAY:
-                DrawRectangle(0, 0, screenWidth, screenHeight, BLUE);
-                DrawText("GAMEPLAY SCREEN", 20, 20, 40, DARKBLUE);
-                DrawText("PRESS ENTER to JUMP to GAMEPLAY SCREEN", 120, 220, 20, DARKBLUE);
-            break;
-            case ENDING:
-                DrawRectangle(0, 0, screenWidth, screenHeight, RED);
-                DrawText("ENDING SCREEN", 20, 20, 40, DARKBROWN);
-                DrawText("PRESS ENTER to JUMP to GAMEPLAY SCREEN", 120, 220, 20, DARKBROWN);
-            break;
-        }
-        
+        currentView->Draw(&screenWidth, &screenHeight);
         EndDrawing();
     }
 
