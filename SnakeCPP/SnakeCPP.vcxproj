@@ -157,6 +157,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Tools\Random.cpp" />
     <ClCompile Include="View\EndingView.cpp" />
     <ClCompile Include="View\GameView.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -235,9 +236,10 @@
     </ClCompile>
     <ClCompile Include="SnakeCPP.cpp" />
     <ClCompile Include="View\TitleView.cpp" />
-    <ClCompile Include="View\View.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Enum\SnakeDirectionEnum.h" />
+    <ClInclude Include="Tools\Random.h" />
     <ClInclude Include="View\EndingView.h" />
     <ClInclude Include="View\GameView.h" />
     <ClInclude Include="View\TitleView.h" />

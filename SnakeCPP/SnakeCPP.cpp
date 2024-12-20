@@ -18,7 +18,9 @@ int main() {
     InitWindow(screenWidth, screenHeight, "SnakeCPP");
     SetTargetFPS(60);
 
-    ClearBackground(RAYWHITE);
+    titleView.init(&screenWidth, &screenHeight);
+    gameView.init(&screenWidth, &screenHeight);
+    endingView.init(&screenWidth, &screenHeight);
 
     while (!WindowShouldClose()) {
         switch (currentScene)
@@ -40,9 +42,9 @@ int main() {
             break;
         }
 
-        currentView->Update(&currentScene);
+        currentView->update(&currentScene);
         BeginDrawing();
-        currentView->Draw(&screenWidth, &screenHeight);
+        currentView->draw(&screenWidth, &screenHeight);
         EndDrawing();
     }
 

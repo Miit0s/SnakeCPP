@@ -4,6 +4,8 @@
 class View {
 public:
     virtual ~View() = default;
-    virtual void Update(int* currentScreen) = 0;
-    virtual void Draw(const int* screenWidth, const int* screenHeight) = 0;
+
+    virtual void init(const int* screenWidth, const int* screenHeight) = 0;
+    virtual void update(int* currentScreen) = 0;
+    virtual void draw(const int* screenWidth, const int* screenHeight) = 0;
 };

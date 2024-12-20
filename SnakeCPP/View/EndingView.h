@@ -4,6 +4,7 @@
 class EndingView: public View
 {
 public:
-    void Update(int* currentScreen) override;
-    void Draw(const int* screenWidth, const int* screenHeight) override;
+    void init(const int* screenWidth, const int* screenHeight) override;
+    void update(int* currentScreen) override;
+    void draw(const int* screenWidth, const int* screenHeight) override;
 };

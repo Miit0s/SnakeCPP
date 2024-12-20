@@ -1,6 +1,11 @@
 #include "TitleView.h"
 
-void TitleView::Update(int* currentScreen)
+void TitleView::init(const int* screenWidth, const int* screenHeight)
+{
+    
+}
+
+void TitleView::update(int* currentScreen)
 {
     if (IsKeyPressed(KEY_ENTER))
     {
@@ -8,9 +13,10 @@ void TitleView::Update(int* currentScreen)
     }
 }
 
-void TitleView::Draw(const int* screenWidth, const int* screenHeight)
+void TitleView::draw(const int* screenWidth, const int* screenHeight)
 {
-    DrawRectangle(0, 0, *screenWidth, *screenHeight, GREEN);
-    DrawText("TITLE SCREEN", 20, 20, 40, DARKGREEN);
-    DrawText("PRESS ENTER to JUMP to GAMEPLAY SCREEN", 120, 220, 20, DARKGREEN);
+    ClearBackground(RAYWHITE);
+    DrawRectangle(0, 0, *screenWidth, *screenHeight, WHITE);
+    DrawText("Sake Game", 20, 20, 40, GRAY);
+    DrawText("Press ENTER to START", 120, 220, 20, GRAY);
 }
