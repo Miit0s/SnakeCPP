@@ -7,44 +7,56 @@
 constexpr int screenWidth{800};
 constexpr int screenHeight{450};
 
-TitleView titleView{};
-GameView gameView{};
-EndingView endingView{};
+TitleView title_view{};
+GameView game_view{};
+EndingView ending_view{};
+
+void reinitView()
+{
+    title_view.init(&screenWidth, &screenHeight);
+    game_view.init(&screenWidth, &screenHeight);
+    ending_view.init(&screenWidth, &screenHeight);
+}
 
 int main() {
-    int currentScene{0};
-    View* currentView = &titleView;
+    int current_scene{0};
+    int previous_scene{0};
+    
+    View* current_view = &title_view;
     
     InitWindow(screenWidth, screenHeight, "SnakeCPP");
     SetTargetFPS(60);
 
-    titleView.init(&screenWidth, &screenHeight);
-    gameView.init(&screenWidth, &screenHeight);
-    endingView.init(&screenWidth, &screenHeight);
+    reinitView();
 
     while (!WindowShouldClose()) {
-        switch (currentScene)
+        switch (current_scene)
         {
             case 0:
                 {
-                    currentView = &titleView;
+                    current_view = &title_view;
                 }
                 break;
             case 1:
                 {
-                    currentView = &gameView;
+                    current_view = &game_view;
                 }
                 break;
             case 2:
                 {
-                    currentView = &endingView;
+                    current_view = &ending_view;
                 }
             break;
         }
 
-        currentView->update(&currentScene);
+        if (current_scene != previous_scene) {
+            reinitView();
+            previous_scene = current_scene;
+        }
+
+        current_view->update(&current_scene);
         BeginDrawing();
-        currentView->draw(&screenWidth, &screenHeight);
+        current_view->draw(&screenWidth, &screenHeight);
         EndDrawing();
     }
 
@@ -52,4 +64,3 @@ int main() {
     
     return 0;
 }
-

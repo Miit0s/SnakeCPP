@@ -9,7 +9,7 @@ void EndingView::update(int* currentScreen)
 {
     if (IsKeyPressed(KEY_ENTER))
     {
-        *currentScreen = 0;
+        *currentScreen = 1;
     }
 }
 
@@ -17,6 +17,6 @@ void EndingView::draw(const int* screenWidth, const int* screenHeight)
 {
     ClearBackground(RAYWHITE);
     DrawRectangle(0, 0, *screenWidth, *screenHeight, RED);
-    DrawText("ENDING SCREEN", 20, 20, 40, DARKBROWN);
-    DrawText("PRESS ENTER to JUMP to GAMEPLAY SCREEN", 120, 220, 20, DARKBROWN);
+    DrawText("Game Over", 20, 20, 40, DARKBROWN);
+    DrawText("Press ENTER to REPLAY", 120, 220, 20, DARKBROWN);
 }

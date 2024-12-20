@@ -20,7 +20,7 @@ void GameView::init(const int* screen_width, const int* screen_height)
 
 void GameView::update(int* current_screen)
 {
-    if (game_over_) {
+    if (snakeIsDead()) {
         *current_screen = 2;
     }
 
@@ -157,3 +157,28 @@ void GameView::moveFruit()
     fruit_position_ = Vector2{fruit_pos_x, fruit_pos_y};
 }
 
+bool GameView::snakeIsDead()
+{
+    return checkIfSnakeIsOutOfBound() || checkIfSnakeIsCollideWithHisTales();
+}
+
+bool GameView::checkIfSnakeIsOutOfBound()
+{
+    const bool out_of_bound_x{0 >= snake_body_pos_[0].x || snake_body_pos_[0].x >= static_cast<float>(number_of_vertical_lines)};
+    const bool out_of_bound_y{0 >= snake_body_pos_[0].y || snake_body_pos_[0].y >= static_cast<float>(number_of_horizontal_lines)};
+
+    return out_of_bound_x || out_of_bound_y;
+}
+
+bool GameView::checkIfSnakeIsCollideWithHisTales()
+{
+    const Vector2 snake_head_pos{snake_body_pos_[0]};
+    for (int i = 1; i < snake_current_length_; i++)
+    {
+        if (snake_body_pos_[i].x == snake_head_pos.x && snake_body_pos_[i].y == snake_head_pos.y)
+        {
+            return true;
+        }
+    }
+    return false;
+}

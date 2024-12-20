@@ -45,4 +45,8 @@ private:
     void moveFruit();
 
     void chooseNextDirection();
+
+    bool snakeIsDead();
+    bool checkIfSnakeIsOutOfBound() ;
+    bool checkIfSnakeIsCollideWithHisTales();
 };
