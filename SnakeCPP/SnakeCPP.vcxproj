@@ -157,9 +157,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Fruit.cpp" />
+    <ClCompile Include="Game\Snake.cpp" />
     <ClCompile Include="Tools\Random.cpp" />
-    <ClCompile Include="View\EndingView.cpp" />
-    <ClCompile Include="View\GameView.cpp">
+    <ClCompile Include="View\EndingScene.cpp" />
+    <ClCompile Include="View\GameScene.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
@@ -235,15 +237,17 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="SnakeCPP.cpp" />
-    <ClCompile Include="View\TitleView.cpp" />
+    <ClCompile Include="View\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enum\SnakeDirectionEnum.h" />
+    <ClInclude Include="Game\Fruit.h" />
+    <ClInclude Include="Game\Snake.h" />
     <ClInclude Include="Tools\Random.h" />
-    <ClInclude Include="View\EndingView.h" />
-    <ClInclude Include="View\GameView.h" />
-    <ClInclude Include="View\TitleView.h" />
-    <ClInclude Include="View\View.h" />
+    <ClInclude Include="View\EndingScene.h" />
+    <ClInclude Include="View\GameScene.h" />
+    <ClInclude Include="View\TitleScene.h" />
+    <ClInclude Include="View\Scene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,11 +1,11 @@
-#include "TitleView.h"
+#include "TitleScene.h"
 
-void TitleView::init(const int* screenWidth, const int* screenHeight)
+void TitleScene::init(const int* screenWidth, const int* screenHeight)
 {
     
 }
 
-void TitleView::update(int* currentScreen)
+void TitleScene::update(int* currentScreen)
 {
     if (IsKeyPressed(KEY_ENTER))
     {
@@ -13,7 +13,7 @@ void TitleView::update(int* currentScreen)
     }
 }
 
-void TitleView::draw(const int* screenWidth, const int* screenHeight)
+void TitleScene::draw(const int* screenWidth, const int* screenHeight)
 {
     ClearBackground(RAYWHITE);
     DrawRectangle(0, 0, *screenWidth, *screenHeight, WHITE);

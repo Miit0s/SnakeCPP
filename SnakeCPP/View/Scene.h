@@ -1,9 +1,9 @@
 #pragma once
 #include "raylib.h"
 
-class View {
+class Scene {
 public:
-    virtual ~View() = default;
+    virtual ~Scene() = default;
 
     virtual void init(const int* screenWidth, const int* screenHeight) = 0;
     virtual void update(int* currentScreen) = 0;

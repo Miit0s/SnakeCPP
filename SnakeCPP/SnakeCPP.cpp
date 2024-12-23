@@ -1,15 +1,15 @@
 #include "raylib.h"
 #include "cstdint"
-#include "View/EndingView.h"
-#include "View/GameView.h"
-#include "View/TitleView.h"
+#include "View/EndingScene.h"
+#include "View/GameScene.h"
+#include "View/TitleScene.h"
 
 constexpr int screenWidth{800};
 constexpr int screenHeight{450};
 
-TitleView title_view{};
-GameView game_view{};
-EndingView ending_view{};
+TitleScene title_view{};
+GameScene game_view{};
+EndingScene ending_view{};
 
 void reinitView()
 {
@@ -22,7 +22,7 @@ int main() {
     int current_scene{0};
     int previous_scene{0};
     
-    View* current_view = &title_view;
+    Scene* current_view = &title_view;
     
     InitWindow(screenWidth, screenHeight, "SnakeCPP");
     SetTargetFPS(60);

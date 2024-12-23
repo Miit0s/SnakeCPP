@@ -1,7 +1,7 @@
 #pragma once
-#include "View.h"
+#include "Scene.h"
 
-class EndingView: public View
+class TitleScene: public Scene
 {
 public:
     void init(const int* screenWidth, const int* screenHeight) override;
