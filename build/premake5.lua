@@ -173,6 +173,11 @@ if (downloadRaylib) then
         location "../"
         targetdir "../bin/%{cfg.buildcfg}"
 
+        filter "system:windows"
+            staticruntime "On"
+            linkoptions { "-static" }
+        filter {}
+
         filter {"system:windows", "configurations:Release", "action:gmake*"}
             kind "WindowedApp"
             buildoptions { "-Wl,--subsystem,windows" }

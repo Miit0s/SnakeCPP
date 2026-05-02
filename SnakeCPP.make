@@ -49,7 +49,7 @@ ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -Wshadow -g -std=c17
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -Wshadow -g -std=c++17
 LIBS += bin/Debug/raylib.lib -lwinmm -lgdi32 -lopengl32
 LDDEPS += bin/Debug/raylib.lib
-ALL_LDFLAGS += $(LDFLAGS) -Lbin/Debug -L/usr/lib64 -m64
+ALL_LDFLAGS += $(LDFLAGS) -Lbin/Debug -L/usr/lib64 -m64 -static
 
 else ifeq ($(config),debug_x86)
 TARGETDIR = bin/Debug
@@ -60,7 +60,7 @@ ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m32 -Wshadow -g -std=c17
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m32 -Wshadow -g -std=c++17
 LIBS += bin/Debug/raylib.lib -lwinmm -lgdi32 -lopengl32
 LDDEPS += bin/Debug/raylib.lib
-ALL_LDFLAGS += $(LDFLAGS) -Lbin/Debug -L/usr/lib32 -m32
+ALL_LDFLAGS += $(LDFLAGS) -Lbin/Debug -L/usr/lib32 -m32 -static
 
 else ifeq ($(config),debug_arm64)
 TARGETDIR = bin/Debug
@@ -71,7 +71,7 @@ ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -Wshadow -g -std=c17
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -Wshadow -g -std=c++17
 LIBS += bin/Debug/raylib.lib -lwinmm -lgdi32 -lopengl32
 LDDEPS += bin/Debug/raylib.lib
-ALL_LDFLAGS += $(LDFLAGS) -Lbin/Debug
+ALL_LDFLAGS += $(LDFLAGS) -Lbin/Debug -static
 
 else ifeq ($(config),release_x64)
 TARGETDIR = bin/Release
@@ -82,7 +82,7 @@ ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -Wshadow -O2 -std=c17 -Wl,--subsyst
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -Wshadow -O2 -std=c++17 -Wl,--subsystem,windows
 LIBS += bin/Release/raylib.lib -lwinmm -lgdi32 -lopengl32
 LDDEPS += bin/Release/raylib.lib
-ALL_LDFLAGS += $(LDFLAGS) -Lbin/Release -L/usr/lib64 -m64 -mwindows -s
+ALL_LDFLAGS += $(LDFLAGS) -Lbin/Release -L/usr/lib64 -m64 -mwindows -s -static
 
 else ifeq ($(config),release_x86)
 TARGETDIR = bin/Release
@@ -93,7 +93,7 @@ ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m32 -Wshadow -O2 -std=c17 -Wl,--subsyst
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m32 -Wshadow -O2 -std=c++17 -Wl,--subsystem,windows
 LIBS += bin/Release/raylib.lib -lwinmm -lgdi32 -lopengl32
 LDDEPS += bin/Release/raylib.lib
-ALL_LDFLAGS += $(LDFLAGS) -Lbin/Release -L/usr/lib32 -m32 -mwindows -s
+ALL_LDFLAGS += $(LDFLAGS) -Lbin/Release -L/usr/lib32 -m32 -mwindows -s -static
 
 else ifeq ($(config),release_arm64)
 TARGETDIR = bin/Release
@@ -104,7 +104,7 @@ ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -Wshadow -O2 -std=c17 -Wl,--subsystem,wi
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -Wshadow -O2 -std=c++17 -Wl,--subsystem,windows
 LIBS += bin/Release/raylib.lib -lwinmm -lgdi32 -lopengl32
 LDDEPS += bin/Release/raylib.lib
-ALL_LDFLAGS += $(LDFLAGS) -Lbin/Release -mwindows -s
+ALL_LDFLAGS += $(LDFLAGS) -Lbin/Release -mwindows -s -static
 
 endif
 
