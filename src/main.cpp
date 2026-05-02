@@ -1,5 +1,4 @@
 #include "raylib.h"
-#include "cstdint"
 #include "View/EndingScene.h"
 #include "View/GameScene.h"
 #include "View/TitleScene.h"
